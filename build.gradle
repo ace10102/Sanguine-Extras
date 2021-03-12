@@ -1,19 +1,16 @@
 buildscript {
-	repositories {
-		mavenCentral()
+    repositories {
 		maven {
-			name = "forge"
-				url "http://files.minecraftforge.net/maven"
+			url = "https://repo1.maven.org/maven2"
 		}
-		maven {
-			name = "sonatype"
-				url "https://oss.sonatype.org/content/repositories/snapshots/"
-		}
-		//ivy {
-		//name "BloodMagic"
-		//artifactPattern ""
-		//http://minetweaker3.powerofbytes.com/download/[module]-[revision].[ext]"
-		//}
+        maven {
+            name = "forge"
+            url = "https://files.minecraftforge.net/maven"
+        }
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
 	}
 	dependencies {
 		classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
@@ -22,13 +19,9 @@ buildscript {
 
 repositories {
 	maven {
-		name 'CB Repo'
-			url "http://chickenbones.net/maven/"
+		name 'chickenbones'
+		url "http://chickenbones.net/maven/"
 	}
-    ivy {
-		name 'FMP'
-		artifactPattern "http://files.minecraftforge.net/[module]/[module]-dev-[revision].[ext]"
-    }
 }
 
 ext.buildProps = file "build.properties"
@@ -87,17 +80,17 @@ processResources
 	}
 }
 
-task copyChicken(type: Copy, dependsOn: "extractUserDev") {
-	from { configurations.compile }
-	include "**/*Chicken*.jar", "**/*NotEnoughItems*.jar", "**/*ForgeMultipart*.jar"
-	exclude "**/CodeChickenLib*" // because CCC downloads it anyways.. -_-
-	into file(minecraft.runDir + "/mods")
+//task copyChicken(type: Copy, dependsOn: "extractUserDev") {
+//	from { configurations.compile }
+//	include "**/*Chicken*.jar", "**/*NotEnoughItems*.jar", "**/*ForgeMultipart*.jar"
+//	exclude "**/CodeChickenLib*" // because CCC downloads it anyways.. -_-
+//	into file(minecraft.runDir + "/mods")
 
-	mustRunAfter "deobfBinJar"
-	mustRunAfter "repackMinecraft"
-}
-tasks.setupDevWorkspace.dependsOn copyChicken
-tasks.setupDecompWorkspace.dependsOn copyChicken
+//	mustRunAfter "deobfBinJar"
+//	mustRunAfter "repackMinecraft"
+//}
+//tasks.setupDevWorkspace.dependsOn copyChicken
+//tasks.setupDecompWorkspace.dependsOn copyChicken
 
 // add a source jar
 task sourceJar(type: Jar) {
