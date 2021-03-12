@@ -74,8 +74,8 @@ public class ItemDestruction extends Item implements IBindable
         {
             String sigilOwner = stack.stackTagCompound.getString("ownerName");
             List<Vector3> toBreak = UtilsDestruction.find(x, y, z, w, side, getLength(stack));
-            for(Vector3 vec3 : toBreak)
-                System.out.println(vec3);
+            /*for(Vector3 vec3 : toBreak)
+                System.out.println(vec3);*/
             
             UtilsDestruction.doDrops(player, sigilOwner, toBreak, w);
             return true;

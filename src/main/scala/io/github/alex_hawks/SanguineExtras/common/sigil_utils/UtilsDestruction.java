@@ -26,7 +26,7 @@ public class UtilsDestruction
 
     public static List<Vector3> find(int x, int y, int z, World world, ForgeDirection side, int length)
     {
-        System.out.println(side);
+        //System.out.println(side);
         List<Vector3> toReturn = new ArrayList<Vector3>();
         switch (side)
         {
